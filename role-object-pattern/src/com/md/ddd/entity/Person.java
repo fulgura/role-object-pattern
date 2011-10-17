@@ -17,8 +17,7 @@ import javax.persistence.TemporalType;
  * 
  */
 @Entity
-@NamedQuery(name = "Person.all", query = "SELECT P FROM Person P")
-public class Person implements Serializable {
+public abstract class Person implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

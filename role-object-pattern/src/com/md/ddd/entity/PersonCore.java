@@ -19,6 +19,7 @@ public class PersonCore extends Person {
 
 	private String name;
 
+	
 	private Set<PersonRole> roleList;
 	
 	PersonCore() {
