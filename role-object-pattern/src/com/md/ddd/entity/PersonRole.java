@@ -6,6 +6,8 @@ package com.md.ddd.entity;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 /**
  * @author diego
@@ -14,6 +16,11 @@ import javax.persistence.Entity;
 @Entity
 public abstract class PersonRole extends Person {
 
+	/**
+	 * One-to-one unidirectional
+	 */
+	@OneToOne
+	@JoinColumn(name = "PERSON_CORE_ID")
 	private PersonCore personCore;
 
 	PersonRole() {

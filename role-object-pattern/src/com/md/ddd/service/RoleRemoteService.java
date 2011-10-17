@@ -39,14 +39,14 @@ public class RoleRemoteService implements RoleService {
 
 	@Override
 	public PersonCore save(PersonCore personCore) throws ServiceException {
-		// TODO Auto-generated method stub
-		return null;
+		entityManager.persist(personCore);
+		return personCore;
 	}
 
 	@Override
 	public Customer save(Customer customer) throws ServiceException {
-		// TODO Auto-generated method stub
-		return null;
+		entityManager.persist(customer);
+		return customer;
 	}
 
 }

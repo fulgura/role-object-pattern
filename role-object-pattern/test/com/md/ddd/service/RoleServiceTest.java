@@ -79,10 +79,16 @@ public class RoleServiceTest {
 	 * Test method for
 	 * {@link com.md.ddd.service.RoleService#save(com.md.ddd.entity.PersonCore)}
 	 * .
+	 * 
+	 * @throws ServiceException
 	 */
 	@Test
-	public final void testSavePersonCore() {
-		fail("Not yet implemented"); // TODO
+	public final void testSavePersonCore() throws ServiceException {
+		PersonCore personCore = new PersonCore("Diego");
+		Assert.assertNull(personCore.getId());
+		personCore = roleService.save(personCore);
+		Assert.assertNotNull(personCore.getId());
+		
 	}
 
 	/**
