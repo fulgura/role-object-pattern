@@ -12,7 +12,15 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQuery(name = "PersonRole.all", query = "SELECT PR FROM PersonRole PR")
-public class PersonRole extends Person {
+public abstract class PersonRole extends Person {
 
-	
+	PersonRole() {
+		// ORM :(
+	}
+
+	/**
+	 * 
+	 * @return a role name 
+	 */
+	public abstract String roleName();
 }
