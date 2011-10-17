@@ -36,7 +36,11 @@ public class RoleRemoteService implements RoleService {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Customer> customerList() throws ServiceException {
-		return entityManager.createNamedQuery("Customer.all").getResultList();
+		List<Customer> customerList = entityManager.createNamedQuery("Customer.all").getResultList();
+		for (Customer customer : customerList) {
+			customer.getPersonCore().getRoleList().isEmpty();
+		}
+		return customerList;
 	}
 
 	@Override
@@ -53,6 +57,9 @@ public class RoleRemoteService implements RoleService {
 
 	@Override
 	public Customer save(Customer customer) throws ServiceException {
+		
+		entityManager.merge(customer.getPersonCore());
+		
 		entityManager.persist(customer);
 		return customer;
 	}

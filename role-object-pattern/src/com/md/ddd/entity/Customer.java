@@ -8,6 +8,12 @@ import javax.persistence.NamedQuery;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 /**
+ * It's a ConcreteRole in the Role Object Pattern.<BR>
+ * <b>Structure</b><BR>
+ * - models and implements a context-specific extension of the Component
+ * interface( {@link Person} )<BR>
+ * - can be instantiated with a ComponentCore as argument ( {@link PersonCore} ) <BR>
+ * 
  * @author diego
  * 
  */
@@ -25,6 +31,7 @@ public class Customer extends PersonRole {
 	public Customer(PersonCore personCore, String identification) {
 		super(personCore);
 		this.identification = identification;
+		personCore.addRole(this);
 	}
 
 	/*

@@ -5,21 +5,45 @@ package com.md.ddd.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
+ * It's a ComponentRole in the Role Object Pattern.<BR>
+ * <b>Structure</b><BR>
+ * - stores a reference to the decorated ComponentCore ( {@link PersonCore} )<BR>
+ * - implements the Component interface ( {@link Person} ) by forwarding
+ * requests to its core attribute.<BR>
+ * 
  * @author diego
  * 
  */
 @Entity
-public abstract class PersonRole extends Person {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class PersonRole implements Person {
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.TABLE)
+	private Long id;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createdDate = new Date();
 
 	/**
 	 * One-to-one unidirectional
 	 */
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "PERSON_CORE_ID")
 	private PersonCore personCore;
 
@@ -51,5 +75,46 @@ public abstract class PersonRole extends Person {
 
 	public PersonRole getRole(Class<?> roleClass) {
 		return personCore.getRole(roleClass);
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public PersonCore getPersonCore() {
+		return personCore;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PersonRole other = (PersonRole) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
+	public boolean hasRole(Class<? extends PersonRole> roleClass) {
+		return personCore.hasRole(roleClass);
+	}
+
+	public PersonRole removeRole(Class<?> roleClass) {
+		return personCore.removeRole(roleClass);
 	}
 }
