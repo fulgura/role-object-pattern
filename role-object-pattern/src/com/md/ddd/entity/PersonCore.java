@@ -59,7 +59,6 @@ public class PersonCore implements Person {
 		this.roleList = new HashSet<PersonRole>();
 	}
 
-	@Override
 	public String getName() {
 		return name;
 	}

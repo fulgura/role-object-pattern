@@ -25,7 +25,7 @@ public class Customer extends PersonRole {
 	private String identification;
 
 	Customer() {
-		// TODO Auto-generated constructor stub
+		// ORM :(
 	}
 
 	public Customer(PersonCore personCore, String identification) {
@@ -34,11 +34,6 @@ public class Customer extends PersonRole {
 		personCore.addRole(this);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.md.ddd.entity.PersonRole#roleName()
-	 */
 	@Override
 	public String roleName() {
 		return this.getClass().getCanonicalName();

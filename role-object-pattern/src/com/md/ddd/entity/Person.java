@@ -57,10 +57,31 @@ public interface Person extends Serializable {
 	 */
 	public abstract boolean hasRole(Class<? extends PersonRole> roleClass);
 
+	/**
+	 * Retrieves an instance of an specific Person Role in a {@link PersonRole}
+	 * hierarchy. If this person doesn't have this role return null.
+	 * 
+	 * @param roleClass
+	 * @return an instance of a class in a {@link PersonRole} hierarchy or null
+	 *         if person doesn't have this specific role.
+	 */
 	public abstract <T extends PersonRole> T getRole(Class<T> roleClass);
 
+	/**
+	 * 
+	 * @param roleClass
+	 *            a class in a {@link PersonRole} hierarchy
+	 * @return true if the specific role was completely removed from person or
+	 *         false if It wasn't removed.
+	 */
 	public abstract boolean removeRole(Class<? extends PersonRole> roleClass);
 
+	/**
+	 * Retrieves the person's name. A person has an specific name an it's a
+	 * message for {@link Person} protocol
+	 * 
+	 * @return a person name
+	 */
 	public abstract String getName();
 
 }
