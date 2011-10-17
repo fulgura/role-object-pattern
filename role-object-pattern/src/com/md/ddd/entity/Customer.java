@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.md.poo;
+package com.md.ddd.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
@@ -28,7 +28,7 @@ public class Customer extends PersonRole {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.md.poo.PersonRole#roleName()
+	 * @see com.md.ddd.entity.PersonRole#roleName()
 	 */
 	@Override
 	public String roleName() {

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.md.poo;
+package com.md.ddd.entity;
 
 import java.util.HashSet;
 import java.util.Set;
