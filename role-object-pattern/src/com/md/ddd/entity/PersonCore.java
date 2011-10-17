@@ -74,10 +74,10 @@ public class PersonCore implements Person {
 	}
 
 	@Override
-	public PersonRole getRole(Class<?> roleClass) {
+	public <T extends PersonRole> T getRole(Class<T> roleClass) {
 		for (PersonRole role : this.roleList) {
 			if (role.getClass().equals(roleClass)) {
-				return role;
+				return (T) role;
 			}
 		}
 		return null;
@@ -95,9 +95,9 @@ public class PersonCore implements Person {
 	}
 
 	@Override
-	public PersonRole removeRole(Class<?> roleClass) {
+	public boolean removeRole(Class<? extends PersonRole> roleClass) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 	public Long getId() {

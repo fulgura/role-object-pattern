@@ -49,16 +49,17 @@ public interface Person extends Serializable {
 	public abstract void addRole(PersonRole personRole);
 
 	/**
+	 * Answer if a person object has or not an specific role.
 	 * 
 	 * @param roleClass
-	 *            an i
+	 *            an class in {@link PersonRole} hierarchy.
 	 * @return true if person has this role or false if It hasn't.
 	 */
 	public abstract boolean hasRole(Class<? extends PersonRole> roleClass);
 
-	public abstract PersonRole getRole(Class<?> roleClass);
+	public abstract <T extends PersonRole> T getRole(Class<T> roleClass);
 
-	public abstract PersonRole removeRole(Class<?> roleClass);
+	public abstract boolean removeRole(Class<? extends PersonRole> roleClass);
 
 	public abstract String getName();
 

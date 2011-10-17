@@ -73,7 +73,7 @@ public abstract class PersonRole implements Person {
 		personCore.addRole(personRole);
 	}
 
-	public PersonRole getRole(Class<?> roleClass) {
+	public <T extends PersonRole> T getRole(Class<T> roleClass) {
 		return personCore.getRole(roleClass);
 	}
 
@@ -114,7 +114,7 @@ public abstract class PersonRole implements Person {
 		return personCore.hasRole(roleClass);
 	}
 
-	public PersonRole removeRole(Class<?> roleClass) {
+	public boolean removeRole(Class<? extends PersonRole> roleClass) {
 		return personCore.removeRole(roleClass);
 	}
 }
