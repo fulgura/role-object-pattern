@@ -12,6 +12,7 @@ import javax.persistence.PersistenceContextType;
 
 import com.md.ddd.entity.Customer;
 import com.md.ddd.entity.PersonCore;
+import com.md.ddd.entity.PersonRole;
 
 /**
  * @author diego
@@ -32,8 +33,9 @@ public class RoleRemoteService implements RoleService {
 		return entityManager.createNamedQuery("PersonCore.all").getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Customer> allCustomer() throws ServiceException {
+	public List<Customer> customerList() throws ServiceException {
 		return entityManager.createNamedQuery("Customer.all").getResultList();
 	}
 
@@ -44,9 +46,9 @@ public class RoleRemoteService implements RoleService {
 	}
 
 	@Override
-	public Customer save(Customer customer) throws ServiceException {
-		entityManager.persist(customer);
-		return customer;
+	public <T extends PersonRole> T save(T personRole) throws ServiceException {
+		entityManager.persist(personRole);
+		return personRole;
 	}
 
 }

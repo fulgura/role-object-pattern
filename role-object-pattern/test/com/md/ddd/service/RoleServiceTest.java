@@ -3,8 +3,6 @@
  */
 package com.md.ddd.service;
 
-import static org.junit.Assert.fail;
-
 import java.util.List;
 import java.util.Properties;
 
@@ -18,6 +16,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.md.ddd.entity.Customer;
 import com.md.ddd.entity.PersonCore;
 
 /**
@@ -68,11 +67,14 @@ public class RoleServiceTest {
 	}
 
 	/**
-	 * Test method for {@link com.md.ddd.service.RoleService#allCustomer()}.
+	 * Test method for {@link com.md.ddd.service.RoleService#customerList()}.
+	 * 
+	 * @throws ServiceException
 	 */
 	@Test
-	public final void testAllCustomer() {
-		fail("Not yet implemented"); // TODO
+	public final void testAllCustomer() throws ServiceException {
+		List<Customer> customerList = roleService.customerList();
+		Assert.assertTrue(customerList.isEmpty());
 	}
 
 	/**
@@ -88,16 +90,27 @@ public class RoleServiceTest {
 		Assert.assertNull(personCore.getId());
 		personCore = roleService.save(personCore);
 		Assert.assertNotNull(personCore.getId());
-		
+
 	}
 
 	/**
 	 * Test method for
 	 * {@link com.md.ddd.service.RoleService#save(com.md.ddd.entity.Customer)}.
+	 * 
+	 * @throws ServiceException
 	 */
 	@Test
-	public final void testSaveCustomer() {
-		fail("Not yet implemented"); // TODO
+	public final void testSaveCustomer() throws ServiceException {
+		PersonCore personCore = new PersonCore("Diego");
+		Assert.assertNull(personCore.getId());
+		personCore = roleService.save(personCore);
+		Assert.assertNotNull(personCore.getId());
+
+		Customer customer = new Customer(personCore, "20-26688893-8");
+		Assert.assertNull(customer.getId());
+//		customer = roleService.save(customer);
+//		Assert.assertNotNull(customer.getId());
+//
 	}
 
 }
