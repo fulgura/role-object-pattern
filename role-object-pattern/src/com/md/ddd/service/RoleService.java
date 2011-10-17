@@ -21,6 +21,8 @@ public interface RoleService {
 
 	public PersonCore save(PersonCore personCore) throws ServiceException;
 
-	public <T extends PersonRole> T save(T personRole) throws ServiceException;
+	public Customer save(Customer customer) throws ServiceException;
+
+//	public <T extends PersonRole> T save(T personRole) throws ServiceException;
 
 }

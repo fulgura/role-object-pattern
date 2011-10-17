@@ -28,7 +28,6 @@ public abstract class PersonRole extends Person {
 	}
 
 	public PersonRole(PersonCore personCore) {
-		super();
 		this.personCore = personCore;
 	}
 

@@ -45,10 +45,16 @@ public class RoleRemoteService implements RoleService {
 		return personCore;
 	}
 
+//	@Override
+//	public <T extends PersonRole> T save(T personRole) throws ServiceException {
+//		entityManager.persist(personRole);
+//		return personRole;
+//	}
+
 	@Override
-	public <T extends PersonRole> T save(T personRole) throws ServiceException {
-		entityManager.persist(personRole);
-		return personRole;
+	public Customer save(Customer customer) throws ServiceException {
+		entityManager.persist(customer);
+		return customer;
 	}
 
 }

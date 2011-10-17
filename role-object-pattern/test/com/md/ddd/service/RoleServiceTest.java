@@ -108,9 +108,12 @@ public class RoleServiceTest {
 
 		Customer customer = new Customer(personCore, "20-26688893-8");
 		Assert.assertNull(customer.getId());
-//		customer = roleService.save(customer);
-//		Assert.assertNotNull(customer.getId());
-//
+		customer = roleService.save(customer);
+		Assert.assertNotNull(customer.getId());
+
+		List<Customer> customerList = roleService.customerList();
+		Assert.assertFalse(customerList.isEmpty());
+
 	}
 
 }

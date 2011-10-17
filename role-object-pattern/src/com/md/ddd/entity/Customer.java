@@ -5,12 +5,14 @@ package com.md.ddd.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 /**
  * @author diego
  * 
  */
 @Entity
+@PrimaryKeyJoinColumn
 @NamedQuery(name = "Customer.all", query = "SELECT C FROM Customer C")
 public class Customer extends PersonRole {
 
