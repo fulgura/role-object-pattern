@@ -38,9 +38,8 @@ public class RoleServiceTest {
 		p.put(Context.INITIAL_CONTEXT_FACTORY,
 				"org.apache.openejb.client.LocalInitialContextFactory");
 		p.put("lastfmDatabase", "new://Resource?type=DataSource");
-		p.put("lastfmDatabase.JdbcDriver", "org.postgresql.Driver");
-		p.put("lastfmDatabase.JdbcUrl",
-				"jdbc:postgresql://localhost/role-pattern");
+		p.put("lastfmDatabase.JdbcDriver", "com.mysql.jdbc.Driver");
+		p.put("lastfmDatabase.JdbcUrl", "jdbc:mysql://localhost/role-pattern");
 		p.put("lastfmDatabase.UserName", "rp");
 		p.put("lastfmDatabase.Password", "rp");
 
@@ -117,7 +116,7 @@ public class RoleServiceTest {
 		Assert.assertEquals("Diego", customer.getName());
 		Assert.assertEquals("20-26688893-8", customer.getIdentification());
 		Assert.assertFalse(customer.getPersonCore().getRoleList().isEmpty());
-		
+
 	}
 
 }
