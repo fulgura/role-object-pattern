@@ -22,6 +22,8 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @NamedQuery(name = "Customer.all", query = "SELECT C FROM Customer C")
 public class Customer extends PersonRole {
 
+	private static final long serialVersionUID = 1L;
+
 	private String identification;
 
 	Customer() {

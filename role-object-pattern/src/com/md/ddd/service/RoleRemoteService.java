@@ -58,8 +58,9 @@ public class RoleRemoteService implements RoleService {
 	@Override
 	public Customer save(Customer customer) throws ServiceException {
 		
-		entityManager.merge(customer.getPersonCore());
-		
+		//entityManager.(arg0)
+		//PersonCore personCore = entityManager.find(customer.getPersonCore().getClass(), customer.getPersonCore().getId());
+		entityManager.refresh(customer.getPersonCore());
 		entityManager.persist(customer);
 		return customer;
 	}
