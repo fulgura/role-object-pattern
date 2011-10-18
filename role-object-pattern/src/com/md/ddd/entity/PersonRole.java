@@ -6,6 +6,7 @@ package com.md.ddd.entity;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -28,6 +30,7 @@ import javax.persistence.TemporalType;
  * 
  */
 @Entity
+@Table(name="PERSON_ROLE")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class PersonRole implements Person {
 
@@ -35,9 +38,11 @@ public abstract class PersonRole implements Person {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
+	@Column(name = "ID")
 	private Long id;
 
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "CREATE_DATE")
 	private Date createdDate = new Date();
 
 	/**

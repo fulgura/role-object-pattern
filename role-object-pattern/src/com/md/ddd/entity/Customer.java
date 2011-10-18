@@ -3,9 +3,11 @@
  */
 package com.md.ddd.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 /**
  * It's a ConcreteRole in the Role Object Pattern.<BR>
@@ -18,12 +20,14 @@ import javax.persistence.PrimaryKeyJoinColumn;
  * 
  */
 @Entity
+@Table(name = "CUSTOMER")
 @PrimaryKeyJoinColumn
 @NamedQuery(name = "Customer.all", query = "SELECT C FROM Customer C")
 public class Customer extends PersonRole {
 
 	private static final long serialVersionUID = 1L;
 
+	@Column(name = "IDENTIFICATION")
 	private String identification;
 
 	Customer() {

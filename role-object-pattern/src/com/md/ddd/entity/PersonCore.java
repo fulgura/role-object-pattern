@@ -8,12 +8,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -29,6 +31,7 @@ import javax.persistence.TemporalType;
  * 
  */
 @Entity
+@Table(name = "PERSON_CORE")
 @NamedQuery(name = "PersonCore.all", query = "SELECT PC FROM PersonCore PC")
 public class PersonCore implements Person {
 
@@ -36,16 +39,21 @@ public class PersonCore implements Person {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
+	@Column(name = "ID")
 	private Long id;
 
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "CREATE_DATE")
 	private Date createdDate = new Date();
+
+	@Column(name = "NAME")
 	private String name;
 
 	/**
 	 * All {@link PersonRole}s for this {@link PersonCore}
 	 */
 	@OneToMany(cascade = CascadeType.ALL)
+	@Column(name = "ROLE_LIST")
 	private Set<PersonRole> roleList;
 
 	PersonCore() {

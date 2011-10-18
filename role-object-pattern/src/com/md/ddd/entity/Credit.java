@@ -6,11 +6,13 @@ package com.md.ddd.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -19,6 +21,7 @@ import javax.persistence.TemporalType;
  *
  */
 @Entity
+@Table(name="CREDIT")
 @NamedQuery(name = "Credit.all", query = "SELECT PC FROM Credit PC")
 public class Credit implements Serializable{
 
@@ -26,11 +29,14 @@ public class Credit implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
+	@Column(name = "ID")
 	private Long id;
 
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "CREATE_DATE")
 	private Date createdDate = new Date();
 
+	@Column(name = "IDENTIFICATION")
 	private String identification;
 
 	Credit() {
