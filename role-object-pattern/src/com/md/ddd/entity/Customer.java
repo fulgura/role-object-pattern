@@ -4,6 +4,7 @@
 package com.md.ddd.entity;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
 import javax.persistence.PrimaryKeyJoinColumn;

@@ -30,7 +30,7 @@ import javax.persistence.TemporalType;
  * 
  */
 @Entity
-@Table(name="PERSON_ROLE")
+@Table(name = "PERSON_ROLE")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class PersonRole implements Person {
 
@@ -43,7 +43,7 @@ public abstract class PersonRole implements Person {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "CREATE_DATE")
-	private Date createdDate = new Date();
+	private Date roleCreatedDate = new Date();
 
 	/**
 	 * One-to-one unidirectional
@@ -121,5 +121,9 @@ public abstract class PersonRole implements Person {
 
 	public boolean removeRole(Class<? extends PersonRole> roleClass) {
 		return personCore.removeRole(roleClass);
+	}
+
+	public Date getRoleCreatedDate() {
+		return roleCreatedDate;
 	}
 }

@@ -5,10 +5,10 @@ package com.md.ddd.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -17,10 +17,10 @@ import javax.persistence.Table;
 
 /**
  * @author diego
- *
+ * 
  */
 @Entity
-@Table(name="BORROWER")
+@Table(name = "BORROWER")
 @PrimaryKeyJoinColumn
 @NamedQuery(name = "Borrower.all", query = "SELECT C FROM Borrower C")
 public class Borrower extends PersonRole {
@@ -33,12 +33,14 @@ public class Borrower extends PersonRole {
 	@OneToMany(cascade = CascadeType.ALL)
 	@Column(name = "CREDIT_LIST")
 	private List<Credit> creditList = new ArrayList<Credit>();
-	
+
 	Borrower() {
 		// ORM :(
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.md.ddd.entity.PersonRole#roleName()
 	 */
 	@Override
@@ -57,5 +59,4 @@ public class Borrower extends PersonRole {
 				+ super.toString() + "]";
 	}
 
-	
 }
